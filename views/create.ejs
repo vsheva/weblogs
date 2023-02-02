@@ -1,21 +1,8 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Blog</title>
-</head>
+<%- include("./partials/head.ejs") %>
 <body>
 
-<nav>
-    <div class = "site-title">
-        <a href="/"><h1>Valeri's Blog</h1></a>
-        <p> A Valeriy Shevchenko Site</p>
-    </div>
-    <ul>
-        <li><a href="/">Blogs</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blogs/create">New Blog</a></li>
-    </ul>
-</nav>
+<%- include("./partials/nav.ejs") %>
 
 <div class="create-blog content">
     <form>
@@ -28,6 +15,8 @@
         <button>Submit</button>
     </form>
 </div>
+
+<%- include("./partials/footer.ejs") %>
 
 </body>
 </html>

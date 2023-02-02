@@ -1,11 +1,11 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Blog</title>
-</head>
+
+<%- include("./partials/head.ejs") %>
+
 <body>
 
-<nav>
+<%- include("./partials/nav.ejs") %>
+<!--<nav>
     <div class = "site-title">
         <a href="/"><h1>Valeri's Blog</h1></a>
         <p> A Valeriy Shevchenko Site</p>
@@ -15,7 +15,9 @@
         <li><a href="/about">About</a></li>
         <li><a href="/blogs/create">New Blog</a></li>
     </ul>
-</nav>
+</nav>-->
+
+
 
 <div class="about content">
     <h2>About Us</h2>
@@ -23,6 +25,8 @@
     <p>About a years ago, I decided to go all in on delivering the highest quality guides on everything I know (and continue learning) about blogging here on my own blog. </p>
     <p>99% of my blog content is free</p>
 </div>
+
+<%- include("./partials/footer.ejs") %>
 
 </body>
 </html>
