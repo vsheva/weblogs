@@ -22,12 +22,18 @@ app.get('/about', (req, res) => {
 
 });
 
-//redirect
+
 /**
-  app.get("/about-us", (req, res)=>{
+ //redirect
+   app.get("/about-us", (req, res)=>{
    res.redirect("/about")
 })
  */
+app.get('/blogs/create', (req, res) => {
+   res.render("create.ejs");
+});
+
+
 
 //404 page
 app.use((req, res)=>{
