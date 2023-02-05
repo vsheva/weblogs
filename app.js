@@ -23,28 +23,15 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('dev'));
+app.use((req, res, next) => {
+    res.locals.path = req.path;
+    next();
+});
 
 //routes
 app.get('/', (req, res) => {
   res.redirect('/blogs')
-  // const blogs = [
-  //   {
-  //     title: 'Beautiful Life',
-  //     snippet:
-  //       "In this blog, I wanted to focus on the feeling that there's a real strength in the human spirit when you try to look for beauty in different situations.",
-  //   },
-  //   {
-  //     title: 'How Can We Protect the North Pacific Right Whale?',
-  //     snippet:
-  //       ' The North Pacific right whale is one of the rarest of all large whale species, and one of the most endangered species on the planet.Despite its massive size (more than 50 feet long!), the North Pacific right whale feeds on tiny plankton by filtering hundreds of gallons of seawater in a single gulp to filter out the organisms with baleen plates.',
-  //   },
-  //   {
-  //     title: 'Climate Change',
-  //     snippet:
-  //       'Climate change blog articles about climate crisis, global warming, and our responsibility to climate change. Helping inspire and restore our environment.',
-  //   },
-  // ];
-  // res.render('index.ejs', { title: 'Home', blogs });
+
 });
 
 app.get('/about', (req, res) => {
@@ -53,6 +40,13 @@ app.get('/about', (req, res) => {
 
 
 //blog routes
+
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new blog' });
+
+});
+
+
 app.get('/blogs', (req, res)=>{
   Blog.find().sort({createdAt: -1})
       .then((result)=>{
@@ -91,10 +85,7 @@ app.delete('/blogs/:id',(req, res)=>{
 })
 
 
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create a new blog' });
 
-});
 
 //404 page
 app.use((req, res) => {
@@ -104,6 +95,24 @@ app.use((req, res) => {
 
 
 
+// const blogs = [
+//   {
+//     title: 'Beautiful Life',
+//     snippet:
+//       "In this blog, I wanted to focus on the feeling that there's a real strength in the human spirit when you try to look for beauty in different situations.",
+//   },
+//   {
+//     title: 'How Can We Protect the North Pacific Right Whale?',
+//     snippet:
+//       ' The North Pacific right whale is one of the rarest of all large whale species, and one of the most endangered species on the planet.Despite its massive size (more than 50 feet long!), the North Pacific right whale feeds on tiny plankton by filtering hundreds of gallons of seawater in a single gulp to filter out the organisms with baleen plates.',
+//   },
+//   {
+//     title: 'Climate Change',
+//     snippet:
+//       'Climate change blog articles about climate crisis, global warming, and our responsibility to climate change. Helping inspire and restore our environment.',
+//   },
+// ];
+// res.render('index.ejs', { title: 'Home', blogs });
 
 
 /**
